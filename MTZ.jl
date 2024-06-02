@@ -11,11 +11,12 @@ end
 
 # Générer les instances
 instances = Dict()
-sizes = [10]#, 20, 30, 50, 100]
+sizes = [10, 20, 30, 50, 100]
 
 for size in sizes
     instances[size] = [generate_tsp_instance(size) for _ in 1:5]
 end
+
 
 # Fonction pour extraire la séquence des villes à partir de la solution
 function extract_tour(x)
@@ -44,6 +45,7 @@ function solve_tsp_mtz(distance_matrix; time_limit=300)
     n = size(distance_matrix, 1)
     model = Model(Cbc.Optimizer)
     set_optimizer_attribute(model, "seconds", time_limit)
+    set_optimizer_attribute(model, "logLevel", 0)  # Suppress solver output
 
     @variable(model, x[1:n, 1:n], Bin)
     @variable(model, u[2:n])
@@ -137,5 +139,8 @@ for size in sizes
         println("Coût de la meilleure solution Recuit simulé: ", best_cost)
         push!(results_sa[size], (best_solution, best_cost))
         push!(results_mtz[size], (obj_val, solution, elapsed_time, optimal))
+        println("############################################")
     end
+    println(" ")
+    println("NEW SIZE")
 end
