@@ -2,7 +2,7 @@
 
 ## Project Description
 The project for the Operations Research (OR) course involves developing a Julia program using the JuMP library to solve an optimization problem. The problem addressed is the Traveling Salesman Problem (TSP), a classic problem in combinatorial optimization. The objective is to compare two methods for solving the TSP on various randomly generated instances: an exact method (MTZ) and a heuristic method (Simulated Annealing). 
-
+a
 ### Problem Description
 The Traveling Salesman Problem (TSP) involves finding the shortest possible route that visits each city exactly once and returns to the origin city. This project aims to implement and compare two different methods for solving the TSP:
 
